@@ -1,23 +1,12 @@
 // ===============================
-// CONFIGURAÇÃO DAS OPÇÕES
+// CONFIGURAÇÃO
 // ===============================
 
-// 👉 ADICIONE NOVOS LINKS AQUI
-const links = [
-  {
-    nome: "CONTADOR DE PARTIDAS",
-    imagem: "foto1.png",
-    url: "https://sleepyofc7.github.io/CONTADOR-DE-PARTIDAS-MM2/"
-  },
-  {
-    nome: "MEU PORTFÓLIO",
-    imagem: "foto2.png",
-    url: "https://seusite2.com"
-  }
-];
+const username = "sleepyofc7"; // SEU USER
+const repoIgnorado = "meu-hub";
 
 // ===============================
-// SOM DE CLIQUE
+// SOM
 // ===============================
 
 const clickSound = new Audio("click.mp3");
@@ -28,30 +17,58 @@ function playSound() {
 }
 
 // ===============================
-// GERAR CARDS
+// ELEMENTOS
 // ===============================
 
 const grid = document.getElementById("grid");
 
-function render() {
+// ===============================
+// BUSCAR REPOS
+// ===============================
+
+async function getRepos() {
+  const res = await fetch(`https://api.github.com/users/${username}/repos`);
+  const data = await res.json();
+
+  return data.filter(repo => repo.name !== repoIgnorado);
+}
+
+// ===============================
+// CRIAR CARD
+// ===============================
+
+function createCard(repo) {
+
+  const card = document.createElement("div");
+  card.className = "card";
+
+  // Tenta pegar a imagem do repo
+  const imageUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/main/foto1.png`;
+
+  card.innerHTML = `
+    <img src="${imageUrl}" onerror="this.style.display='none'">
+    <h3>${repo.name.toUpperCase()}</h3>
+  `;
+
+  card.onclick = () => {
+    playSound();
+    window.open(repo.html_url, "_blank");
+  };
+
+  grid.appendChild(card);
+}
+
+// ===============================
+// RENDERIZAR
+// ===============================
+
+async function render() {
   grid.innerHTML = "";
 
-  links.forEach(link => {
+  const repos = await getRepos();
 
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${link.imagem}">
-      <h3>${link.nome}</h3>
-    `;
-
-    card.onclick = () => {
-      playSound();
-      window.open(link.url, "_blank");
-    };
-
-    grid.appendChild(card);
+  repos.forEach(repo => {
+    createCard(repo);
   });
 }
 
