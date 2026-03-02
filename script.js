@@ -11,14 +11,16 @@ function playSound() {
 const grid = document.getElementById("grid");
 
 // ===============================
-// PEGAR LINK DA DESCRIÇÃO
+// EXTRAIR LINK DA DESCRIÇÃO
 // ===============================
 
 function extractLink(text) {
   if (!text) return null;
 
-  const match = text.match(/https?:\/\/[^\s]+/);
-  return match ? match[0] : null;
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const matches = text.match(urlRegex);
+
+  return matches ? matches[0] : null;
 }
 
 // ===============================
@@ -44,11 +46,22 @@ function createCard(repo) {
   const imageUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/main/foto1.png`;
 
   card.innerHTML = `
-    <img src="${imageUrl}" onerror="this.src='https://via.placeholder.com/300'">
+    <img src="${imageUrl}" onerror="this.style.display='none'">
     <h3>${repo.name.toUpperCase()}</h3>
   `;
 
-  const link = extractLink(repo.description) || repo.html_url;
+  // PRIORIDADE DE LINK
+  let link = null;
+
+  if (repo.homepage && repo.homepage.startsWith("http")) {
+    link = repo.homepage; // 👈 MELHOR OPÇÃO
+  } else {
+    link = extractLink(repo.description);
+  }
+
+  if (!link) {
+    link = repo.html_url; // fallback
+  }
 
   card.onclick = () => {
     playSound();
@@ -64,6 +77,7 @@ function createCard(repo) {
 
 async function render() {
   grid.innerHTML = "";
+
   const repos = await getRepos();
 
   repos.forEach(createCard);
@@ -93,7 +107,7 @@ btnLista.onclick = () => {
 };
 
 // ===============================
-// MENU LATERAL
+// MENU
 // ===============================
 
 const menuBtn = document.getElementById("menuBtn");
