@@ -2,9 +2,7 @@
 // CONFIGURAÇÃO DAS OPÇÕES
 // ===============================
 
-// 👉 AQUI você adiciona novos links futuramente
-// Basta copiar um bloco e alterar
-
+// 👉 ADICIONE NOVOS LINKS AQUI
 const links = [
   {
     nome: "CONTADOR DE PARTIDAS",
@@ -71,7 +69,6 @@ btnCompleto.onclick = () => {
   grid.classList.remove("list");
   btnCompleto.classList.add("active");
   btnLista.classList.remove("active");
-
   localStorage.setItem("modo", "completo");
 };
 
@@ -80,12 +77,11 @@ btnLista.onclick = () => {
   grid.classList.add("list");
   btnLista.classList.add("active");
   btnCompleto.classList.remove("active");
-
   localStorage.setItem("modo", "lista");
 };
 
 // ===============================
-// SALVAR PREFERÊNCIA
+// CARREGAR PREFERÊNCIA
 // ===============================
 
 const modoSalvo = localStorage.getItem("modo");
