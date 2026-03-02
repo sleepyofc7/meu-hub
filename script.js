@@ -1,13 +1,5 @@
-// ===============================
-// CONFIGURAÇÃO
-// ===============================
-
-const username = "sleepyofc7"; // SEU USER
+const username = "sleepyofc7";
 const repoIgnorado = "meu-hub";
-
-// ===============================
-// SOM
-// ===============================
 
 const clickSound = new Audio("click.mp3");
 
@@ -16,11 +8,18 @@ function playSound() {
   clickSound.play();
 }
 
+const grid = document.getElementById("grid");
+
 // ===============================
-// ELEMENTOS
+// PEGAR LINK DA DESCRIÇÃO
 // ===============================
 
-const grid = document.getElementById("grid");
+function extractLink(text) {
+  if (!text) return null;
+
+  const match = text.match(/https?:\/\/[^\s]+/);
+  return match ? match[0] : null;
+}
 
 // ===============================
 // BUSCAR REPOS
@@ -42,40 +41,38 @@ function createCard(repo) {
   const card = document.createElement("div");
   card.className = "card";
 
-  // Tenta pegar a imagem do repo
   const imageUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/main/foto1.png`;
 
   card.innerHTML = `
-    <img src="${imageUrl}" onerror="this.style.display='none'">
+    <img src="${imageUrl}" onerror="this.src='https://via.placeholder.com/300'">
     <h3>${repo.name.toUpperCase()}</h3>
   `;
 
+  const link = extractLink(repo.description) || repo.html_url;
+
   card.onclick = () => {
     playSound();
-    window.open(repo.html_url, "_blank");
+    window.open(link, "_blank");
   };
 
   grid.appendChild(card);
 }
 
 // ===============================
-// RENDERIZAR
+// RENDER
 // ===============================
 
 async function render() {
   grid.innerHTML = "";
-
   const repos = await getRepos();
 
-  repos.forEach(repo => {
-    createCard(repo);
-  });
+  repos.forEach(createCard);
 }
 
 render();
 
 // ===============================
-// TOGGLE LISTA / COMPLETO
+// TOGGLE LISTA
 // ===============================
 
 const btnCompleto = document.getElementById("btnCompleto");
@@ -86,7 +83,6 @@ btnCompleto.onclick = () => {
   grid.classList.remove("list");
   btnCompleto.classList.add("active");
   btnLista.classList.remove("active");
-  localStorage.setItem("modo", "completo");
 };
 
 btnLista.onclick = () => {
@@ -94,17 +90,23 @@ btnLista.onclick = () => {
   grid.classList.add("list");
   btnLista.classList.add("active");
   btnCompleto.classList.remove("active");
-  localStorage.setItem("modo", "lista");
 };
 
 // ===============================
-// CARREGAR PREFERÊNCIA
+// MENU LATERAL
 // ===============================
 
-const modoSalvo = localStorage.getItem("modo");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
-if (modoSalvo === "lista") {
-  grid.classList.add("list");
-  btnLista.classList.add("active");
-  btnCompleto.classList.remove("active");
-}
+menuBtn.onclick = () => {
+  playSound();
+  sidebar.classList.add("active");
+  overlay.classList.add("active");
+};
+
+overlay.onclick = () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+};
