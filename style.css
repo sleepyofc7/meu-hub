@@ -23,36 +23,42 @@ body {
 /* CONTAINER */
 .container {
   padding: 15px;
-  max-width: 900px;
+  max-width: 600px; /* 🔥 LIMITA TAMANHO NO PC */
   margin: auto;
   text-align: center;
 }
 
 h1 {
   margin-bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
 }
 
-/* GRID (3 POR LINHA MOBILE) */
+/* GRID FIXO BONITO */
 .grid {
   display: grid;
+
+  /* 🔥 SEMPRE COMPACTO */
   grid-template-columns: repeat(3, 1fr);
+
   gap: 10px;
 }
 
-/* DESKTOP */
+/* SE TELA MAIOR, MOSTRA MAIS MAS SEM FICAR GRANDE */
 @media (min-width: 700px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* CARD */
 .card {
-  padding: 8px;
-  border-radius: 16px;
+  padding: 6px;
+  border-radius: 18px;
+
+  /* BORDA ESTILO IOS */
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(15px);
+
   cursor: pointer;
   transition: 0.2s;
 }
@@ -62,18 +68,21 @@ h1 {
   background: rgba(255,255,255,0.18);
 }
 
-/* IMAGEM MENOR */
+/* 🔥 IMAGEM IOS (AGORA CORRETO) */
 .card img {
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 5px;
+
+  object-fit: cover; /* preenche tudo */
+  border-radius: 16px;
+
+  display: block;
 }
 
 /* TEXTO */
 .card h3 {
   font-size: 11px;
+  margin-top: 4px;
 }
 
 /* LISTA */
@@ -93,7 +102,7 @@ h1 {
   position: fixed;
   top: 15px;
   left: 15px;
-  font-size: 20px;
+  font-size: 18px;
   background: rgba(255,255,255,0.2);
   padding: 6px 10px;
   border-radius: 10px;
