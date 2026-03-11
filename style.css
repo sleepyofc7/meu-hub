@@ -24,7 +24,7 @@ body {
   width: calc(100% + 80px);
   height: calc(100% + 80px);
 
-  background: url("fundo.jpg") center/cover no-repeat;
+  background: url("./fundo.jpg") center/cover no-repeat;
 
   filter: blur(12px) brightness(0.7);
 
