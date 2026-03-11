@@ -1,80 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUB SLEEPY</title>
 
-  <!-- FONTE -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ÍCONES (Font Awesome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>HUB SLEEPY</title>
 
-  <!-- SEU CSS -->
-  <link rel="stylesheet" href="style.css">
+<meta name="description" content="Hub de links do Sleepy com redes sociais, projetos e conteúdos.">
+
+<meta name="theme-color" content="#0f0f10">
+
+<!-- FAVICON -->
+<link rel="icon" href="favicon.png">
+
+<!-- PRELOAD FONTE -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- FONTE -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- ÍCONES -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+<!-- FUNDO -->
 <div class="background"></div>
 
+
 <!-- BOTÃO MENU -->
-<div class="menu-btn" id="menuBtn">☰</div>
+<div class="menu-btn" id="menuBtn">
+<i class="fas fa-bars"></i>
+</div>
+
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-  <h2>Links</h2>
 
-  <!-- 🔽 EDITE AQUI SEUS LINKS -->
-  
-  <a href="https://github.com/sleepyofc7" target="_blank">
-    <i class="fab fa-github"></i> GitHub
-  </a>
+<h2>Links</h2>
 
-  <a href="https://www.youtube.com/@sleepyofc1" target="_blank">
-    <i class="fab fa-youtube"></i> YouTube
-  </a>
+<a href="https://github.com/sleepyofc7" target="_blank">
+<i class="fab fa-github"></i> GitHub
+</a>
 
-  <a href="https://www.roblox.com/pt/users/10599998857/profile" target="_blank">
-    <i class="fas fa-gamepad"></i> Roblox
-  </a>
+<a href="https://www.youtube.com/@sleepyofc1" target="_blank">
+<i class="fab fa-youtube"></i> YouTube
+</a>
 
-  <a href="https://x.com/sleepyofc1" target="_blank">
-    <i class="fab fa-x-twitter"></i> X
-  </a>
+<a href="https://www.roblox.com/pt/users/10599998857/profile" target="_blank">
+<i class="fas fa-gamepad"></i> Roblox
+</a>
 
-  <a href="https://www.tiktok.com/@sleepyofc1" target="_blank">
-    <i class="fab fa-tiktok"></i> TikTok
-  </a>
+<a href="https://x.com/sleepyofc1" target="_blank">
+<i class="fab fa-x-twitter"></i> X
+</a>
 
-  <a href="https://www.instagram.com/sleepyofc1/" target="_blank">
-    <i class="fab fa-instagram"></i> Instagram
-  </a>
+<a href="https://www.tiktok.com/@sleepyofc1" target="_blank">
+<i class="fab fa-tiktok"></i> TikTok
+</a>
 
-  <!-- 🔼 PRA ADICIONAR MAIS:
-  <a href="LINK">
-    <i class="CLASSE-DO-ICONE"></i> Nome
-  </a>
-  -->
+<a href="https://www.instagram.com/sleepyofc1/" target="_blank">
+<i class="fab fa-instagram"></i> Instagram
+</a>
 
 </div>
 
+
+<!-- OVERLAY -->
 <div class="overlay" id="overlay"></div>
 
+
+<!-- CONTEÚDO -->
 <div class="container">
 
-  <h1>HUB SLEEPY</h1>
+<h1>HUB SLEEPY</h1>
 
-  <div class="toggle">
-    <button id="btnCompleto" class="active">COMPLETO</button>
-    <button id="btnLista">LISTA</button>
-  </div>
+<div class="toggle">
 
-  <div id="grid" class="grid"></div>
+<button id="btnCompleto" class="active">
+<i class="fas fa-th"></i> COMPLETO
+</button>
+
+<button id="btnLista">
+<i class="fas fa-list"></i> LISTA
+</button>
 
 </div>
 
+<div id="grid" class="grid"></div>
+
+</div>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>
