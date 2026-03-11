@@ -24,7 +24,7 @@ left:-60px;
 width:calc(100% + 120px);
 height:calc(100% + 120px);
 
-background:url("./fundo.jpg") center/cover no-repeat;
+background:url("fundo.jpg") center/cover no-repeat;
 
 filter:blur(14px) brightness(0.65);
 
