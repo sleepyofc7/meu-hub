@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Contador de Partidas",
+    "description": "Um site para facilitar a contagem de partidas de mm2 https://sleepyofc7.github.io/CONTADOR-DE-PARTIDAS-MM2/",
+    "homepage": "https://sleepyofc7.github.io/CONTADOR-DE-PARTIDAS-MM2/",
+    "image": "https://sleepyofc7.github.io/CONTADOR-DE-PARTIDAS-MM2/foto1.png",
+    "html_url": "https://sleepyofc7.github.io/CONTADOR-DE-PARTIDAS-MM2/"
+  },
+  {
+    "name": "Valores MM2",
+    "description": "Site para verificar valores de itens https://sleepyofc7.github.io/values-mm2/",
+    "homepage": "https://sleepyofc7.github.io/values-mm2/",
+    "image": "https://sleepyofc7.github.io/values-mm2/foto1.png",
+    "html_url": "https://sleepyofc7.github.io/values-mm2/"
+  }
+]
