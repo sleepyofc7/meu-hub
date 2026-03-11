@@ -19,9 +19,10 @@ body {
 /* FUNDO */
 .background {
   position: fixed;
-
-  /* aumenta um pouco o fundo para o blur não mostrar borda */
-  inset: -40px;
+  top: -40px;
+  left: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
 
   background: url("fundo.jpg") center/cover no-repeat;
 
