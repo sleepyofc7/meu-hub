@@ -5,6 +5,12 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* GARANTE QUE NÃO APAREÇA BORDA BRANCA */
+html, body {
+  height: 100%;
+  background: #000;
+}
+
 body {
   color: white;
   overflow-x: hidden;
@@ -13,17 +19,21 @@ body {
 /* FUNDO */
 .background {
   position: fixed;
-  width: 100%;
-  height: 100%;
+
+  /* aumenta um pouco o fundo para o blur não mostrar borda */
+  inset: -40px;
+
   background: url("fundo.jpg") center/cover no-repeat;
+
   filter: blur(12px) brightness(0.7);
+
   z-index: -1;
 }
 
 /* CONTAINER */
 .container {
   padding: 15px;
-  max-width: 600px; /* 🔥 LIMITA TAMANHO NO PC */
+  max-width: 600px;
   margin: auto;
   text-align: center;
 }
@@ -33,17 +43,16 @@ h1 {
   font-size: 20px;
 }
 
-/* GRID FIXO BONITO */
+/* GRID */
 .grid {
   display: grid;
 
-  /* 🔥 SEMPRE COMPACTO */
   grid-template-columns: repeat(3, 1fr);
 
   gap: 10px;
 }
 
-/* SE TELA MAIOR, MOSTRA MAIS MAS SEM FICAR GRANDE */
+/* PC */
 @media (min-width: 700px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -53,27 +62,33 @@ h1 {
 /* CARD */
 .card {
   padding: 6px;
+
   border-radius: 18px;
 
-  /* BORDA ESTILO IOS */
   background: rgba(255,255,255,0.08);
+
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   cursor: pointer;
+
   transition: 0.2s;
 }
 
 .card:hover {
   transform: scale(1.05);
+
   background: rgba(255,255,255,0.18);
 }
 
-/* 🔥 IMAGEM IOS (AGORA CORRETO) */
+/* IMAGEM */
 .card img {
   width: 100%;
+
   aspect-ratio: 1/1;
 
-  object-fit: cover; /* preenche tudo */
+  object-fit: cover;
+
   border-radius: 16px;
 
   display: block;
@@ -82,6 +97,7 @@ h1 {
 /* TEXTO */
 .card h3 {
   font-size: 11px;
+
   margin-top: 4px;
 }
 
@@ -92,35 +108,55 @@ h1 {
 
 .list .card {
   height: 45px;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 }
 
-/* MENU */
+/* BOTÃO MENU */
 .menu-btn {
   position: fixed;
+
   top: 15px;
   left: 15px;
+
   font-size: 18px;
+
   background: rgba(255,255,255,0.2);
+
   padding: 6px 10px;
+
   border-radius: 10px;
+
   cursor: pointer;
+
   z-index: 1001;
 }
 
 /* SIDEBAR */
 .sidebar {
   position: fixed;
+
   left: -240px;
+
   top: 0;
+
   width: 220px;
+
   height: 100%;
+
   background: rgba(0,0,0,0.6);
+
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
   padding: 20px;
+
   transition: 0.3s;
+
   z-index: 1002;
 }
 
@@ -130,17 +166,24 @@ h1 {
 
 .sidebar a {
   display: block;
+
   margin: 10px 0;
+
   color: white;
+
   text-decoration: none;
 }
 
 /* OVERLAY */
 .overlay {
   position: fixed;
+
   width: 100%;
+
   height: 100%;
+
   display: none;
+
   z-index: 1000;
 }
 
@@ -155,14 +198,20 @@ h1 {
 
 .toggle button {
   padding: 6px 10px;
+
   border-radius: 10px;
+
   border: none;
+
   margin: 2px;
-  background: rgba(0, 0, 0, 0.1);
-  color: rgb(0, 0, 0);
+
+  background: rgba(255,255,255,0.1);
+
+  color: white;
+
   cursor: pointer;
 }
 
 .toggle .active {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255,255,255,0.3);
 }
